@@ -11,6 +11,7 @@
     keyMap = "us";
   };
 
+  users.users.jb = import ./jb.nix { inherit pkgs; };
 
   time.timeZone = "Europe/Paris";
 

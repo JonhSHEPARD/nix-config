@@ -5,10 +5,10 @@
 {
   imports = [
     # Lab CRI
-    # desktops/lab.nix
+    # ./desktops/lab.nix
 
     # Laptop DEV
-    # desktops/devlap.nix
+    # ./desktops/devlap.nix
   ];
 
   #services.openssh.enable = true;
