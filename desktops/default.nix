@@ -64,12 +64,6 @@
 
     zsh.enable = true;
   };
-
-  networking = {
-    hostName = "jb-lab";
-    interfaces = {
-      eno1.useDHCP = true;
-    };
-  };
+  
 }
 

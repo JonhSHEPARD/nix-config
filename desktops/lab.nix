@@ -69,5 +69,12 @@
 
   swapDevices = [ ];
 
+  networking = {
+    hostName = "jb-lab";
+    interfaces = {
+      eno1.useDHCP = true;
+    };
+  };
+
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
