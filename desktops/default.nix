@@ -17,6 +17,10 @@
 
   services = {
     printing.enable = true;
+    k3s = {
+        enable = true;
+        role = "server";
+    };
 
     xserver = {
       enable = true;
@@ -56,6 +60,9 @@
       python310
       pciutils
       yubikey-personalization
+      k3s
+      kubectl
+      kubectx
     ]; 
   };
 
