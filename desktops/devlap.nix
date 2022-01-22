@@ -13,7 +13,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
       kernelModules = [ "dm-crypt" ];
-      
+
       luks.devices = {
         uncrypted = {
           device = "/dev/disk/by-uuid/15382968-c73e-4211-a4f2-460830224829";
@@ -51,7 +51,6 @@
   };
 
   services = {
-    actkbd.enable = true;
     xserver = {
       synaptics.enable = true;
     };
