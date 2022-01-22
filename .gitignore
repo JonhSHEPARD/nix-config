@@ -1,4 +1,4 @@
 .idea/
 
 local.nix
-result/
+result
