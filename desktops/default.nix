@@ -16,14 +16,19 @@
   };
 
   services = {
-    printing.enable = true;    
+    printing.enable = true;
 
     xserver = {
       enable = true;
       layout = "us";
       xkbOptions = "eurosign:e";
 
-      displayManager.lightdm.enable = true;
+      displayManager = {
+        autoLogin = {
+          enable = true;
+          user = "jb";
+        };
+      };
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
