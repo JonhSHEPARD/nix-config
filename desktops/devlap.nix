@@ -52,7 +52,7 @@
 
   services = {
     xserver = {
-      synaptics.enable = true;
+      libinput.enable = true;
     };
   };
 
