@@ -61,6 +61,10 @@
         { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
       ];
     };
+
+    upower = {
+      enable = true;
+    };
   };
 
   programs.light.enable = true;
