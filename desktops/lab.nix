@@ -74,6 +74,10 @@
     interfaces = {
       eno1.useDHCP = true;
     };
+
+    firewall.allowedTCPPorts = [
+      6443
+    ];
   };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
