@@ -65,18 +65,52 @@
 
   environment.systemPackages = with pkgs; [
     arandr
+    virt-manager
   ];
 
   swapDevices = [ ];
 
   networking = {
     hostName = "jb-lab";
-    interfaces = {
-      eno1.useDHCP = true;
+ 
+    bridges = {
+      br-cri-lab = {
+        interfaces = [
+          "eno1"
+        ];
+      };
     };
 
-    firewall.allowedTCPPorts = [
-      6443
+    interfaces = {
+      br-cri-lab = {
+        ipv4.addresses = [
+          {
+            address = "192.168.240.170";
+            prefixLength = 24;
+          }
+        ];
+      };
+      eno1.useDHCP = false;
+    };
+
+    defaultGateway = "192.168.240.240";
+    nameservers = [ "192.168.240.240" "8.8.8.8" ];
+
+    dhcpcd.denyInterfaces = [ "eno1" "br-cri-lab" ];
+
+    #firewall.allowedTCPPorts = [
+    #  6443
+    #];
+ };
+
+  programs = {
+    dconf.enable = true;
+  };
+
+  virtualisation.libvirtd = {
+    enable = true;
+    allowedBridges = [
+      "br-cri-lab"
     ];
   };
 
