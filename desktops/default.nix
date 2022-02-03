@@ -63,7 +63,24 @@
       k3s
       kubectl
       kubectx
-    ]; 
+      krb5   
+    ];
+  };
+
+  krb5 = {
+    enable = true;
+    libdefaults = {
+      default_realm = "CRI.EPITA.FR";
+      dns_fallback = true;
+      dns_canonicalize_hostname = false;
+      rnds = false;
+      forwardable = true;
+    };
+    realms = {
+      "CRI.EPITA.FR" = {
+        admin_server = "kerberos.pie.cri.epita.fr";
+      };
+    }; 
   };
 
   programs = {
@@ -74,7 +91,7 @@
       pinentryFlavor = "curses";
     };
 
-    zsh.enable = true;
+    zsh.enable = true; 
   };
   
 }
