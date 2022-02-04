@@ -16,11 +16,6 @@
   time.timeZone = "Europe/Paris";
 
   environment.systemPackages = with pkgs; [
-    arandr
-    lightdm_gtk_greeter
-    pinentry-curses
-    pinentry-qt
-    paperkey
   ];
 
   nixpkgs.config.allowUnfree = true;

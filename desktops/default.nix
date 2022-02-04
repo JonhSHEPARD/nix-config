@@ -63,7 +63,12 @@
       #k3s
       kubectl
       kubectx
-      krb5   
+      krb5 
+      arandr
+      lightdm_gtk_greeter
+      pinentry-curses
+      pinentry-qt
+      paperkey  
     ];
   };
 
