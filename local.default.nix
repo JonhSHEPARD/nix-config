@@ -9,6 +9,12 @@
 
     # Laptop DEV
     # ./desktops/devlap.nix
+  
+    #
+
+    # Server iPXE VM
+    # ./servers/ipxe_vm.nix
+
   ];
 
   #services.openssh.enable = true;
