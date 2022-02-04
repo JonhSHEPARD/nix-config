@@ -79,6 +79,9 @@
           "eno1"
         ];
       };
+      br-local-pxe = {
+        interfaces = [];
+      };
     };
 
     interfaces = {
@@ -96,7 +99,11 @@
     defaultGateway = "192.168.240.240";
     nameservers = [ "192.168.240.240" "8.8.8.8" ];
 
-    dhcpcd.denyInterfaces = [ "eno1" "br-cri-lab" ];
+    dhcpcd.denyInterfaces = [
+      "eno1"
+      "br-cri-lab"
+      "br-local-pxe"
+    ];
 
     #firewall.allowedTCPPorts = [
     #  6443
@@ -111,6 +118,7 @@
     enable = true;
     allowedBridges = [
       "br-cri-lab"
+      "br-local-pxe"
     ];
   };
 
