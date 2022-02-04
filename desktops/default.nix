@@ -51,18 +51,14 @@
     '';
 
     systemPackages = with pkgs; [
-      zsh
-      git
-      vim
-      wget
       firefox
       gnupg
       python310
       pciutils
       yubikey-personalization
       #k3s
-      kubectl
-      kubectx
+      #kubectl
+      #kubectx
       krb5 
       arandr
       lightdm_gtk_greeter

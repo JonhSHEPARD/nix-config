@@ -16,7 +16,17 @@
   time.timeZone = "Europe/Paris";
 
   environment.systemPackages = with pkgs; [
+    zsh
+    git
+    vim
+    wget
+    bind
   ];
+
+  programs = {
+    zsh.enable = true;
+    vim.defaultEditor = true;
+  };
 
   nixpkgs.config.allowUnfree = true;
 
