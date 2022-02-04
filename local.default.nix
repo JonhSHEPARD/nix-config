@@ -17,7 +17,10 @@
 
   ];
 
-  #services.openssh.enable = true;
+  #services.openssh = {
+  #  enable = true;
+  #  passwordAuthentication = false;
+  #};
 
   system.stateVersion = "21.11";
 }
