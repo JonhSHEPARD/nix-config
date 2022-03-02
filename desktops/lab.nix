@@ -66,7 +66,10 @@
   environment.systemPackages = with pkgs; [
     arandr
     virt-manager
+    teamviewer
   ];
+
+  services.teamviewer.enable = true;
 
   swapDevices = [ ];
 
@@ -96,8 +99,8 @@
       eno1.useDHCP = false;
     };
 
-    defaultGateway = "192.168.240.240";
-    nameservers = [ "192.168.240.240" "8.8.8.8" ];
+    defaultGateway = "192.168.240.254";
+    nameservers = [ "91.243.117.211" "8.8.8.8" ];
 
     dhcpcd.denyInterfaces = [
       "eno1"
