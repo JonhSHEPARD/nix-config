@@ -25,6 +25,7 @@
     xserver = {
       enable = true;
       layout = "us";
+      xkbVariant = "altgr-intl";
       xkbOptions = "eurosign:e";
 
       displayManager = {
@@ -38,6 +39,8 @@
         package = pkgs.i3-gaps;
       };
     };
+
+    teamviewer.enable = true;
 
     pcscd.enable = true;
     udev.packages = with pkgs; [ yubikey-personalization ]; 
@@ -59,8 +62,9 @@
       #k3s
       #kubectl
       #kubectx
-      krb5 
+      krb5
       arandr
+      teamviewer
       lightdm_gtk_greeter
       pinentry-curses
       pinentry-qt
