@@ -38,11 +38,24 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    virt-manager
+  ];
+
   swapDevices = [ ];
 
   networking = {
     hostName = "jb-portable-dev";
     wireless.enable = true;
+
+    #bridges = {
+    #  br-local = {
+    #    interfaces = [
+    #      "enp0s31f6"
+    #      "wlp2s0"
+    #      ];
+    #  };
+    #};
     interfaces = {
       enp0s31f6.useDHCP = true;
       wlp2s0.useDHCP = true;
@@ -65,6 +78,13 @@
     upower = {
       enable = true;
     };
+  };
+
+  virtualisation.libvirtd = {
+      enable = true;
+      allowedBridges = [
+        "br-local"
+      ];
   };
 
   programs.light.enable = true;
