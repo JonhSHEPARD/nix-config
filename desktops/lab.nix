@@ -64,12 +64,8 @@
   services.xserver.videoDrivers = [ "nvidia" "intel" ];
 
   environment.systemPackages = with pkgs; [
-    arandr
     virt-manager
-    teamviewer
   ];
-
-  services.teamviewer.enable = true;
 
   swapDevices = [ ];
 
