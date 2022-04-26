@@ -99,6 +99,8 @@
     ];
   };
 
+  virtualisation.docker.enable = true;
+
   krb5 = {
     enable = true;
     libdefaults = {
