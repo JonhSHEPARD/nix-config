@@ -21,6 +21,11 @@
     vim
     wget
     bind
+    tree
+    unzip
+    dnsutils
+    # DEV
+    python310
   ];
 
   programs = {

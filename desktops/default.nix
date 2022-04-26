@@ -54,21 +54,48 @@
     '';
 
     systemPackages = with pkgs; [
+      # SYSTEM
+      pciutils
+      pavucontrol
+      arandr
+      # DEV
+      apktool
+      postgresql
+      nodejs
+      gnumake
+      # TOOLS
       firefox
       gnupg
-      python310
-      pciutils
       yubikey-personalization
-      #k3s
-      #kubectl
-      #kubectx
-      krb5
-      arandr
       teamviewer
       lightdm_gtk_greeter
       pinentry-curses
       pinentry-qt
-      paperkey  
+      paperkey
+      teams
+      imagemagick
+      discord
+      slack
+      nomacs
+      neofetch
+      flameshot
+      thunderbird
+      libreoffice
+      gimp
+      # DEVOPS
+      #k3s
+      #kubectl
+      #kubectx
+      krb5
+      docker
+      docker-compose
+      # IDE
+      jetbrains.clion
+      jetbrains.webstorm
+      jetbrains.datagrip
+      jetbrains.pycharm-professional
+      jetbrains.idea-ultimate
+      sublime4
     ];
   };
 
