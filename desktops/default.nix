@@ -58,6 +58,7 @@
       pciutils
       pavucontrol
       arandr
+      wireshark
       # DEV
       apktool
       postgresql
