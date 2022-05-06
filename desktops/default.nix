@@ -70,6 +70,13 @@
       postgresql
       nodejs
       gnumake
+      # MEDIA
+      imagemagick
+      nomacs
+      flameshot
+      libreoffice
+      gimp
+      vlc
       # TOOLS
       firefox
       gnupg
@@ -80,15 +87,10 @@
       pinentry-qt
       paperkey
       teams
-      imagemagick
       discord
       slack
-      nomacs
       neofetch
-      flameshot
       thunderbird
-      libreoffice
-      gimp
       # DEVOPS
       #k3s
       #kubectl
