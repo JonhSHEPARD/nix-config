@@ -1,4 +1,4 @@
-# Desktop config for Lab CRI
+# Default desktop config
 { config, lib, pkgs, modulesPath, ... }:
 
 {
@@ -43,7 +43,9 @@
     teamviewer.enable = true;
 
     pcscd.enable = true;
-    udev.packages = with pkgs; [ yubikey-personalization ]; 
+    udev.packages = with pkgs; [ yubikey-personalization ];
+
+    gvfs.enable = true;
   };
 
   environment = {
@@ -56,9 +58,13 @@
     systemPackages = with pkgs; [
       # SYSTEM
       pciutils
+      inetutils
       pavucontrol
       arandr
       wireshark
+      xfce.thunar
+      xfce.thunar-volman
+      gvfs
       # DEV
       apktool
       postgresql
