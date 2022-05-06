@@ -35,6 +35,11 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  services.openssh = {
+    permitRootLogin = "no";
+    passwordAuthentication = false;
+  };
+
   nix = {
     package = pkgs.nixUnstable; # or versioned attributes like nix_2_4
     extraOptions = ''
