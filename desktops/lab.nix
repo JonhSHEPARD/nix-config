@@ -104,9 +104,10 @@
       "br-local-pxe"
     ];
 
-    #firewall.allowedTCPPorts = [
-    #  6443
-    #];
+    firewall.allowedTCPPorts = [
+      4317
+      #6443
+    ];
  };
 
   programs = {
@@ -119,6 +120,14 @@
       "br-cri-lab"
       "br-local-pxe"
     ];
+  };
+
+  hardware.pulseaudio = {
+    zeroconf.publish.enable = true;
+    tcp = {
+      enable = true;
+      anonymousClients.allowAll = true;
+    };
   };
 
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
