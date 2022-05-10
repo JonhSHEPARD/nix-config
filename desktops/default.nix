@@ -88,6 +88,7 @@
       paperkey
       teams
       discord
+      betterdiscordctl
       slack
       neofetch
       thunderbird
