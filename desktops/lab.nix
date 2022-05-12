@@ -10,7 +10,7 @@
     initrd = {
       availableKernelModules = [ "xhci_pci" "ehci_pci" "ata_piix" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod" ];
       kernelModules = [ "dm-snapshot" "dm-mod" "dm-cache" "dm-cache-smq" "dm-thin-pool" "dm-raid" "raid1" "dm-crypt" ];
-      
+
       extraUtilsCommands = ''
         for BIN in ${pkgs.thin-provisioning-tools}/{s,}bin/*; do
           copy_bin_and_libs $BIN
@@ -65,13 +65,14 @@
 
   environment.systemPackages = with pkgs; [
     virt-manager
+    dnsmasq
   ];
 
   swapDevices = [ ];
 
   networking = {
     hostName = "jb-lab";
- 
+
     bridges = {
       br-cri-lab = {
         interfaces = [
@@ -108,7 +109,17 @@
       4317
       #6443
     ];
- };
+
+    networkmanager.dns = "dnsmasq";
+  };
+
+  services.dnsmasq = {
+    enable = true;
+    servers = [
+      "8.8.8.8"
+      "91.243.117.211"
+    ];
+  };
 
   programs = {
     dconf.enable = true;
