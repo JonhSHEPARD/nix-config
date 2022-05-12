@@ -58,7 +58,6 @@
     systemPackages = with pkgs; [
       # SYSTEM
       pciutils
-      inetutils
       pavucontrol
       arandr
       wireshark

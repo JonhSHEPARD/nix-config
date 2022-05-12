@@ -24,6 +24,7 @@
     tree
     unzip
     dnsutils
+    inetutils
     # DEV
     python310
   ];
