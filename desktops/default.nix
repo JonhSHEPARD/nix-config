@@ -63,15 +63,20 @@
       pavucontrol
       arandr
       wireshark
-      xfce.thunar
-      xfce.thunar-volman
+      gnome.nautilus
       gvfs
+      bashmount
+      oh-my-zsh
+      rxvt-unicode
+      polybar
       # DEV
       apktool
       postgresql
       nodejs
       gnumake
+      yarn
       # MEDIA
+      feh
       imagemagick
       nomacs
       flameshot
@@ -93,6 +98,7 @@
       slack
       neofetch
       thunderbird
+      filezilla
       # DEVOPS
       #k3s
       #kubectl
@@ -108,6 +114,7 @@
       jetbrains.datagrip
       jetbrains.pycharm-professional
       jetbrains.idea-ultimate
+      vscode-with-extensions
       sublime4
     ];
   };
