@@ -23,6 +23,7 @@
     bind
     tree
     unzip
+    zip
     dnsutils
     inetutils
     # DEV
