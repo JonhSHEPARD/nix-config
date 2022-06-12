@@ -68,7 +68,7 @@
       bashmount
       oh-my-zsh
       rxvt-unicode
-      polybar
+      polybarFull
       # DEV
       apktool
       postgresql
