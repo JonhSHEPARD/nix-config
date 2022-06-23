@@ -28,6 +28,9 @@
     inetutils
     # DEV
     python310
+    python310Packages.poetry
+    python310Packages.pip
+    python39
   ];
 
   programs = {
