@@ -69,6 +69,7 @@
       oh-my-zsh
       rxvt-unicode
       polybarFull
+      htop
       # DEV
       apktool
       postgresql
@@ -83,6 +84,9 @@
       libreoffice
       gimp
       vlc
+      jami-daemon
+      jami-client-qt
+      qbittorrent
       # TOOLS
       firefox
       gnupg
@@ -142,7 +146,8 @@
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
-      pinentryFlavor = "curses";
+      enableExtraSocket = true;
+      pinentryFlavor = "qt";
     };
 
     zsh.enable = true; 
