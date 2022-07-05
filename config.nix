@@ -26,6 +26,8 @@
     zip
     dnsutils
     inetutils
+    iftop
+    nload
     # DEV
     python310
     python310Packages.poetry
