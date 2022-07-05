@@ -67,6 +67,7 @@
       gvfs
       bashmount
       oh-my-zsh
+      alacritty
       rxvt-unicode
       polybarFull
       htop
