@@ -16,18 +16,22 @@
   time.timeZone = "Europe/Paris";
 
   environment.systemPackages = with pkgs; [
+    # BASE
     zsh
     git
     vim
-    wget
-    bind
     tree
     unzip
     zip
+    # TOOLS
+    wget
+    bind
+    tree
     dnsutils
     inetutils
     iftop
     nload
+    nmap
     # DEV
     python310
     python310Packages.poetry
