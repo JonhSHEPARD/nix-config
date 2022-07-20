@@ -88,6 +88,8 @@
       jami-daemon
       jami-client-qt
       qbittorrent
+      inkscape
+      xournal
       # TOOLS
       firefox
       gnupg
@@ -121,6 +123,8 @@
       jetbrains.idea-ultimate
       vscode-with-extensions
       sublime4
+      # PYTHON
+      openai
     ];
   };
 
