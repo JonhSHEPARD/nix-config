@@ -113,12 +113,18 @@
     networkmanager.dns = "dnsmasq";
   };
 
-  services.dnsmasq = {
-    enable = true;
-    servers = [
-      "8.8.8.8"
-      "91.243.117.211"
-    ];
+  services = {
+    printing = {
+      enable = true;
+      drivers = [ pkgs.hplip ];
+    };
+    dnsmasq = {
+      enable = true;
+      servers = [
+        "8.8.8.8"
+        "91.243.117.211"
+      ];
+    };
   };
 
   programs = {
