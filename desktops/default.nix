@@ -115,6 +115,7 @@
       docker-compose
       terraform
       openstackclient
+      ansible
       # IDE
       jetbrains.clion
       jetbrains.webstorm
