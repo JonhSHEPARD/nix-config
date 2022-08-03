@@ -20,6 +20,7 @@
     zsh
     git
     vim
+    neovim
     tree
     unzip
     zip
