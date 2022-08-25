@@ -108,11 +108,17 @@
       filezilla
       # DEVOPS
       #k3s
-      #kubectl
-      #kubectx
+      krew
+      kubectl
+      kubectl-tree
+      kubectl-doctor
+      kubecolor
+      kubectx
+      kubernetes-helm
       krb5
       docker
       docker-compose
+      stern
       terraform
       openstackclient
       ansible
