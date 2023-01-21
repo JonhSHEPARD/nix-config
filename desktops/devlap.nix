@@ -48,14 +48,14 @@
     hostName = "jb-portable-dev";
     wireless.enable = true;
 
-    #bridges = {
-    #  br-local = {
-    #    interfaces = [
-    #      "enp0s31f6"
-    #      "wlp2s0"
-    #      ];
-    #  };
-    #};
+    bridges = {
+      #br-local = {
+      #  interfaces = [
+      #     "enp0s31f6"
+      #     "wlp2s0"
+      #  ];
+      #};
+    };
     interfaces = {
       enp0s31f6.useDHCP = true;
       wlp2s0.useDHCP = true;
