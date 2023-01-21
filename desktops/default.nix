@@ -60,6 +60,7 @@
     systemPackages = with pkgs; [
       # SYSTEM
       pciutils
+      usbutils
       pavucontrol
       arandr
       wireshark
@@ -92,6 +93,7 @@
       xournal
       # TOOLS
       firefox
+      google-chrome
       gnupg
       yubikey-personalization
       teamviewer
@@ -164,6 +166,5 @@
 
     zsh.enable = true; 
   };
-  
 }
 
