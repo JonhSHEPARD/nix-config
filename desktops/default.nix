@@ -1,7 +1,11 @@
 # Default desktop config
 { config, lib, pkgs, modulesPath, ... }:
 
-{
+let
+  chrome = pkgs.writeShellScriptBin "chrome" ''
+    google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode
+  '';
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -72,6 +76,11 @@
       rxvt-unicode
       polybarFull
       htop
+      gtk_engines
+      gtk-engine-murrine
+      lxappearance
+      nordic
+      chrome
       # DEV
       apktool
       postgresql
