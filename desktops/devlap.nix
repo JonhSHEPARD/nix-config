@@ -40,6 +40,7 @@
 
   environment.systemPackages = with pkgs; [
     virt-manager
+    minicom
   ];
 
   swapDevices = [ ];
