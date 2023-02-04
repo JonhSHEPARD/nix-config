@@ -133,6 +133,7 @@ in {
       terraform
       openstackclient
       ansible
+      maven
       # IDE
       jetbrains.clion
       jetbrains.webstorm
