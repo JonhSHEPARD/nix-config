@@ -87,6 +87,8 @@ in {
       nodejs
       gnumake
       yarn
+      maven
+      jbang
       # MEDIA
       feh
       imagemagick
@@ -133,7 +135,6 @@ in {
       terraform
       openstackclient
       ansible
-      maven
       # IDE
       jetbrains.clion
       jetbrains.webstorm
