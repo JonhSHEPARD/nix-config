@@ -79,6 +79,15 @@
     upower = {
       enable = true;
     };
+
+    printing = {
+      enable = true;
+      drivers = with pkgs; [
+        gutenprint
+        epson-escpr
+        epson-escpr2
+      ];
+    };
   };
 
   virtualisation.libvirtd = {
