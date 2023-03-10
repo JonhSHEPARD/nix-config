@@ -129,12 +129,13 @@ in {
       kubectx
       kubernetes-helm
       krb5
+      k9s
       docker
-      docker-compose
       stern
       terraform
       openstackclient
       ansible
+      vault
       # IDE
       jetbrains.clion
       jetbrains.webstorm
