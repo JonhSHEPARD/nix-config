@@ -3,6 +3,7 @@
 {
   imports = [
     ./default.nix
+    ./../modules/battery-check.nix
   ];
 
   boot = { 
@@ -11,7 +12,7 @@
 
     initrd = {
       availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-      kernelModules = [ "dm-crypt" ];
+      kernelModules = [ "dm-crypt" "i915" ];
 
       luks.devices = {
         uncrypted = {
@@ -38,10 +39,17 @@
     };
   };
 
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    minicom
-  ];
+  environment = {
+    variables = {
+      VDPAU_DRIVER = lib.mkDefault "va_gl";
+    };
+
+    systemPackages = with pkgs; [
+      virt-manager
+      minicom
+      batsignal
+    ];
+  };
 
   swapDevices = [ ];
 
@@ -88,6 +96,10 @@
         epson-escpr2
       ];
     };
+
+    thermald.enable = true;
+
+    blueman.enable = true;
   };
 
   virtualisation.libvirtd = {
@@ -99,10 +111,15 @@
 
   programs.light.enable = true;
 
-  hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
-
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-  hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 
+  hardware = {
+    bluetooth.enable = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    opengl.extraPackages = with pkgs; [
+      vaapiIntel
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
 }
