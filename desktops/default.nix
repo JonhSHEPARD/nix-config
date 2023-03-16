@@ -67,7 +67,6 @@ in {
       usbutils
       pavucontrol
       arandr
-      wireshark
       gnome.nautilus
       gvfs
       bashmount
