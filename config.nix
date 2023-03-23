@@ -34,6 +34,7 @@
     iftop
     nload
     nmap
+    wireguard-tools
     # DEV
     python310
     python310Packages.poetry
