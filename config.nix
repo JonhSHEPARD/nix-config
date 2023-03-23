@@ -29,6 +29,7 @@
     bind
     tree
     dnsutils
+    ldns
     inetutils
     iftop
     nload
