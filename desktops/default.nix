@@ -17,6 +17,7 @@ in {
   hardware.pulseaudio = {
     enable = true;
     package = pkgs.pulseaudioFull;
+    extraConfig = "load-module module-echo-cancel";
   };
 
   services = {
@@ -88,6 +89,7 @@ in {
       yarn
       maven
       jbang
+      go
       # MEDIA
       feh
       imagemagick
@@ -141,6 +143,7 @@ in {
       jetbrains.datagrip
       jetbrains.pycharm-professional
       jetbrains.idea-ultimate
+      jetbrains.goland
       vscode-with-extensions
       sublime4
       # PYTHON
