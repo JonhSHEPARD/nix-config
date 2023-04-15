@@ -3,7 +3,6 @@
 {
   imports = [
     ./default.nix
-    ./../modules/battery-check.nix
     ./../modules/network-tools-gui.nix
   ];
 
