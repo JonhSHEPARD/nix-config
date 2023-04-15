@@ -91,6 +91,8 @@ in {
       jbang
       go
       # MEDIA
+      asciinema
+      asciinema-agg
       feh
       imagemagick
       nomacs
@@ -132,6 +134,7 @@ in {
       krb5
       k9s
       docker
+      dive
       stern
       terraform
       openstackclient
