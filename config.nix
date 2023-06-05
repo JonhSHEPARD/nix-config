@@ -4,7 +4,6 @@ let
   custom-python-packages = ps: with ps; [
     requests
     requests-oauthlib
-    poetry
   ];
 in
 {
@@ -50,6 +49,7 @@ in
     k9s
     wireguard-tools
     # DEV
+    poetry
     (python310.withPackages custom-python-packages)
   ];
 
@@ -58,11 +58,17 @@ in
     vim.defaultEditor = true;
   };
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    # This should not be here
+    permittedInsecurePackages = [
+      "openssl-1.1.1u"
+    ];
+  };
 
-  services.openssh = {
-    permitRootLogin = "no";
-    passwordAuthentication = false;
+  services.openssh.settings = {
+    PermitRootLogin = "no";
+    PasswordAuthentication = false;
   };
 
   nix = {
