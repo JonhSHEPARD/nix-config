@@ -29,94 +29,80 @@ in {
     '';
 
     systemPackages = with pkgs; [
-      # SYSTEM
-      pciutils
-      usbutils
-      pavucontrol
-      arandr
-      gnome.nautilus
-      gvfs
-      bashmount
-      oh-my-zsh
+      #k3s
       alacritty
-      rxvt-unicode
-      polybarFull
-      htop
-      gtk_engines
-      gtk-engine-murrine
-      lxappearance
-      nordic
-      direnv
-      nix-direnv
-      # ALIAS
-      chrome
-      vms
-      # DEV
       apktool
-      postgresql
-      nodejs
-      gnumake
-      yarn
-      maven
-      jbang
-      go
-      # MEDIA
+      arandr
       asciinema
       asciinema-agg
-      feh
-      imagemagick
-      nomacs
-      flameshot
-      libreoffice
-      gimp
-      vlc
-      jami-daemon
-      jami-client-qt
-      qbittorrent
-      inkscape
-      xournal
-      # TOOLS
-      firefox
-      google-chrome
-      gnupg
-      yubikey-personalization
-      teamviewer
-      lightdm_gtk_greeter
-      pinentry-curses
-      pinentry-qt
-      paperkey
-      teams
-      discord
+      bashmount
       betterdiscordctl
-      slack
-      neofetch
-      thunderbird
+      chrome
+      direnv
+      discord
+      dive
+      docker
+      feh
       filezilla
-      ncdu
-      # DEVOPS
-      #k3s
+      firefox
+      flameshot
+      gimp
+      gnome.nautilus
+      gnumake
+      gnupg
+      google-chrome
+      gtk-engine-murrine
+      gtk_engines
+      gvfs
+      imagemagick
+      inkscape
+      jami-client-qt
+      jami-daemon
+      jbang
+      jetbrains.datagrip
+      jetbrains.goland
+      jetbrains.idea-ultimate
       krew
-      kubectl
-      kubectl-tree
-      kubectl-doctor
       kubecolor
+      kubectl
+      kubectl-doctor
+      kubectl-tree
       kubectx
       kubernetes-helm
-      krb5
-      k9s
-      docker
-      dive
-      stern
-      terraform
+      libreoffice
+      lightdm_gtk_greeter
+      lxappearance
+      maven
+      nix-direnv
+      nodejs
+      nomacs
+      nordic
+      oh-my-zsh
       openstackclient
-      ansible
-      vault
-      # IDE
-      jetbrains.datagrip
-      jetbrains.idea-ultimate
-      jetbrains.goland
-      vscode-with-extensions
+      paperkey
+      pavucontrol
+      pciutils
+      pinentry-curses
+      pinentry-qt
+      polybarFull
+      postgresql
+      qbittorrent
+      rxvt-unicode
+      slack
+      stern
       sublime4
+      teams
+      teamviewer
+      terraform
+      thunderbird
+      usbutils
+      vault
+      vlc
+      vms
+      vscode-with-extensions
+      xournal
+      yarn
+      yubikey-personalization
     ];
   };
 

@@ -22,35 +22,38 @@ in
   time.timeZone = "Europe/Paris";
 
   environment.systemPackages = with pkgs; [
-    # BASE
-    zsh
-    git
-    vim
-    neovim
-    tree
-    unzip
-    zip
-    jq
-    # TOOLS
-    wget
+    (python310.withPackages custom-python-packages)
+    ansible
+    awscli
     bind
-    tree
     dnsutils
-    ldns
-    inetutils
+    git
+    go
+    htop
     iftop
+    inetutils
+    ipcalc
+    jq
+    k9s
+    krb5
+    ldns
+    ncdu
+    neofetch
+    neovim
     nload
     nmap
-    smartmontools
-    siege
-    ipcalc
-    powertop
-    awscli
-    k9s
-    wireguard-tools
-    # DEV
     poetry
-    (python310.withPackages custom-python-packages)
+    powertop
+    siege
+    smartmontools
+    tree
+    tree
+    unzip
+    vim
+    wget
+    wireguard-tools
+    zip
+    zsh
   ];
 
   programs = {
