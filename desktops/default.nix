@@ -53,7 +53,6 @@ in {
       google-chrome
       gtk-engine-murrine
       gtk_engines
-      gvfs
       imagemagick
       inkscape
       jami-client-qt
@@ -82,7 +81,6 @@ in {
       paperkey
       pavucontrol
       pciutils
-      pinentry-curses
       pinentry-qt
       polybarFull
       postgresql
