@@ -1,5 +1,12 @@
 { config, pkgs, ... }:
 
+let
+  custom-python-packages = ps: with ps; [
+    requests
+    requests-oauthlib
+    poetry
+  ];
+in
 {
   imports = [
     ./local.nix
@@ -24,6 +31,7 @@
     tree
     unzip
     zip
+    jq
     # TOOLS
     wget
     bind
@@ -34,12 +42,15 @@
     iftop
     nload
     nmap
+    smartmontools
+    siege
+    ipcalc
+    powertop
+    awscli
+    k9s
     wireguard-tools
     # DEV
-    python310
-    python310Packages.poetry
-    python310Packages.pip
-    python39
+    (python310.withPackages custom-python-packages)
   ];
 
   programs = {

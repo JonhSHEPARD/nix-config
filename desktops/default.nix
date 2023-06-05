@@ -12,48 +12,11 @@ in {
 
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  # audio
-  sound.enable = true;
-  hardware.pulseaudio = {
-    enable = true;
-    package = pkgs.pulseaudioFull;
-    extraConfig = "load-module module-echo-cancel";
-  };
-
-  services = {
-    printing.enable = true;
-    #k3s = {
-    #    enable = true;
-    #    role = "server";
-    #};
-
-    xserver = {
-      enable = true;
-      layout = "us";
-      xkbVariant = "altgr-intl";
-      xkbOptions = "eurosign:e";
-
-      displayManager = {
-        autoLogin = {
-          enable = true;
-          user = "jb";
-        };
-      };
-      windowManager.i3 = {
-        enable = true;
-        package = pkgs.i3-gaps;
-      };
-    };
-
-    teamviewer.enable = true;
-
-    pcscd.enable = true;
-    udev.packages = with pkgs; [ yubikey-personalization ];
-
-    gvfs.enable = true;
-  };
-
   environment = {
+    pathsToLink = [
+      "/share/nix-direnv"
+    ];
+
     shellInit = ''
       export GPG_TTY="$(tty)"
       gpg-connect-agent /bye
@@ -81,6 +44,8 @@ in {
       lxappearance
       nordic
       chrome
+      direnv
+      nix-direnv
       # DEV
       apktool
       postgresql
@@ -149,12 +114,14 @@ in {
       jetbrains.goland
       vscode-with-extensions
       sublime4
-      # PYTHON
-      openai
     ];
   };
 
-  virtualisation.docker.enable = true;
+  hardware.pulseaudio = {
+    enable = true;
+    package = pkgs.pulseaudioFull;
+    extraConfig = "load-module module-echo-cancel";
+  };
 
   krb5 = {
     enable = true;
@@ -172,6 +139,15 @@ in {
     }; 
   };
 
+  nix.settings = {
+    keep-outputs = true;
+    keep-derivations = true;
+  };
+
+  nixpkgs.overlays = [
+    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+  ];
+
   programs = {
     mtr.enable = true;
     gnupg.agent = {
@@ -183,5 +159,42 @@ in {
 
     zsh.enable = true; 
   };
+
+  services = {
+    printing.enable = true;
+    #k3s = {
+    #    enable = true;
+    #    role = "server";
+    #};
+
+    xserver = {
+      enable = true;
+      layout = "us";
+      xkbVariant = "altgr-intl";
+      xkbOptions = "eurosign:e";
+
+      displayManager = {
+        autoLogin = {
+          enable = true;
+          user = "jb";
+        };
+      };
+      windowManager.i3 = {
+        enable = true;
+        package = pkgs.i3-gaps;
+      };
+    };
+
+    teamviewer.enable = true;
+
+    pcscd.enable = true;
+    udev.packages = with pkgs; [ yubikey-personalization ];
+
+    gvfs.enable = true;
+  };
+
+  sound.enable = true;
+
+  virtualisation.docker.enable = true;
 }
 
