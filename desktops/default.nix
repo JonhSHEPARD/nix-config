@@ -5,6 +5,9 @@ let
   chrome = pkgs.writeShellScriptBin "chrome" ''
     google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode
   '';
+  vms = pkgs.writeShellScriptBin "vms" ''
+    virt-manager
+  '';
 in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
@@ -43,9 +46,11 @@ in {
       gtk-engine-murrine
       lxappearance
       nordic
-      chrome
       direnv
       nix-direnv
+      # ALIAS
+      chrome
+      vms
       # DEV
       apktool
       postgresql
@@ -87,6 +92,7 @@ in {
       neofetch
       thunderbird
       filezilla
+      ncdu
       # DEVOPS
       #k3s
       krew
@@ -106,10 +112,7 @@ in {
       ansible
       vault
       # IDE
-      jetbrains.clion
-      jetbrains.webstorm
       jetbrains.datagrip
-      jetbrains.pycharm-professional
       jetbrains.idea-ultimate
       jetbrains.goland
       vscode-with-extensions
