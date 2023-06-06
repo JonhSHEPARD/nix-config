@@ -85,6 +85,7 @@ in
     };
     settings = {
       auto-optimise-store = true;
+      substituters = [ "https://cache.nixos.org" "https://s3.cri.epita.fr/cri-nix-cache.s3.cri.epita.fr" ];
     };
   };
 }
