@@ -6,8 +6,7 @@
     ./../modules/network-tools-gui.nix
   ];
 
-  boot = { 
-    kernelModules = [ "kvm-intel" ];
+  boot = {
     extraModulePackages = [ ];
 
     initrd = {
@@ -21,21 +20,11 @@
       };
     };
 
+    kernelModules = [ "kvm-intel" ];
+
     loader = {
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
-    };
-  };
-
-  fileSystems = {
-    "/boot" = {
-      device = "/dev/disk/by-uuid/AF8B-D892";
-      fsType = "vfat";
-    };
-
-    "/" = {
-      device = "/dev/disk/by-uuid/fa10cf90-b78f-4ec9-b60c-a9aa153ba7aa";
-      fsType = "ext4";
     };
   };
 
@@ -51,11 +40,30 @@
     ];
   };
 
-  swapDevices = [ ];
+  fileSystems = {
+    "/boot" = {
+      device = "/dev/disk/by-uuid/AF8B-D892";
+      fsType = "vfat";
+    };
+
+    "/" = {
+      device = "/dev/disk/by-uuid/fa10cf90-b78f-4ec9-b60c-a9aa153ba7aa";
+      fsType = "ext4";
+    };
+  };
+
+  hardware = {
+    bluetooth.enable = true;
+    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+    opengl.extraPackages = with pkgs; [
+      vaapiIntel
+      libvdpau-va-gl
+      intel-media-driver
+    ];
+  };
 
   networking = {
     hostName = "jb-portable-dev";
-    wireless.enable = true;
 
     bridges = {
       #br-local = {
@@ -65,17 +73,20 @@
       #  ];
       #};
     };
+
     interfaces = {
       enp0s31f6.useDHCP = true;
       wlp2s0.useDHCP = true;
     };
+
+    wireless.enable = true;
   };
 
-  services = {
-    xserver = {
-      libinput.enable = true;
-    };
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
+  programs.light.enable = true;
+
+  services = {
     actkbd = {
       enable = true;
       bindings = [
@@ -84,9 +95,7 @@
       ];
     };
 
-    upower = {
-      enable = true;
-    };
+    blueman.enable = true;
 
     printing = {
       enable = true;
@@ -99,27 +108,21 @@
 
     thermald.enable = true;
 
-    blueman.enable = true;
+    upower = {
+      enable = true;
+    };
+
+    xserver = {
+      libinput.enable = true;
+    };
   };
+
+  swapDevices = [ ];
 
   virtualisation.libvirtd = {
-      enable = true;
-      allowedBridges = [
-        "br-local"
-      ];
-  };
-
-  programs.light.enable = true;
-
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
-
-  hardware = {
-    bluetooth.enable = true;
-    cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-    opengl.extraPackages = with pkgs; [
-      vaapiIntel
-      libvdpau-va-gl
-      intel-media-driver
+    enable = true;
+    allowedBridges = [
+      "br-local"
     ];
   };
 }
