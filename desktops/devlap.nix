@@ -29,15 +29,18 @@
   };
 
   environment = {
+    systemPackages = with pkgs; [
+      batsignal
+      betterlockscreen
+      minicom
+      virt-manager
+      xss-lock
+      bash
+    ];
+
     variables = {
       VDPAU_DRIVER = lib.mkDefault "va_gl";
     };
-
-    systemPackages = with pkgs; [
-      virt-manager
-      minicom
-      batsignal
-    ];
   };
 
   fileSystems = {
@@ -80,11 +83,25 @@
     };
 
     wireless.enable = true;
+
+    firewall.allowedTCPPorts = [
+      80
+      443
+    ];
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
 
-  programs.light.enable = true;
+  programs = {
+    dconf.enable = true;
+
+    light.enable = true;
+
+    xss-lock = {
+      enable = true;
+      lockerCommand = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+    };
+  };
 
   services = {
     actkbd = {
@@ -96,6 +113,17 @@
     };
 
     blueman.enable = true;
+
+    logind = {
+      extraConfig = ''
+        IdleAction=lock
+        IdleActionSec=3min
+        HandlePowerKey=ignore
+      '';
+      lidSwitch = "hibernate";
+      lidSwitchDocked = "hibernate";
+      lidSwitchExternalPower = "hibernate";
+    };
 
     printing = {
       enable = true;
@@ -114,6 +142,14 @@
 
     xserver = {
       libinput.enable = true;
+
+      xautolock = {
+        enable = true;
+        time = 3;
+        locker = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+        killtime = 10;
+        killer = "/run/current-system/systemd/bin/systemctl suspend";
+      };
     };
   };
 
