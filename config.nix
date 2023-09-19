@@ -63,9 +63,9 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
-    # This should not be here
+    # This should not be here, thanks sublime :(
     permittedInsecurePackages = [
-      "openssl-1.1.1u"
+      "openssl-1.1.1v"
     ];
   };
 
