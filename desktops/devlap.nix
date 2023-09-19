@@ -34,8 +34,10 @@
       betterlockscreen
       minicom
       virt-manager
+      virtiofsd
       xss-lock
       bash
+      libsForQt5.kdeconnect-kde
     ];
 
     variables = {
@@ -56,7 +58,10 @@
   };
 
   hardware = {
-    bluetooth.enable = true;
+    bluetooth = {
+      enable = true;
+      powerOnBoot = false;
+    };
     cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
     opengl.extraPackages = with pkgs; [
       vaapiIntel
@@ -67,6 +72,8 @@
 
   networking = {
     hostName = "jb-portable-dev";
+
+    useDHCP = false;
 
     bridges = {
       #br-local = {
@@ -82,12 +89,23 @@
       wlp2s0.useDHCP = true;
     };
 
-    wireless.enable = true;
+    wireless = {
+      enable = true;
+      #userControlled.enable = true;
+    };
 
-    firewall.allowedTCPPorts = [
-      80
-      443
-    ];
+    firewall = {
+      allowedTCPPorts = [
+        80
+        443
+      ];
+      allowedTCPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+      allowedUDPPortRanges = [
+        { from = 1714; to = 1764; } # KDE Connect
+      ];
+    };
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
