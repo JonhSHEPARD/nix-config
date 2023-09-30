@@ -106,6 +106,8 @@
         { from = 1714; to = 1764; } # KDE Connect
       ];
     };
+
+    nameservers = [ "1.1.1.1" "9.9.9.9" ];
   };
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
