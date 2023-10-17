@@ -65,7 +65,7 @@ in
     allowUnfree = true;
     # This should not be here, thanks sublime :(
     permittedInsecurePackages = [
-      "openssl-1.1.1v"
+      "openssl-1.1.1w"
     ];
   };
 
