@@ -47,6 +47,7 @@ in {
       firefox
       flameshot
       gimp
+      git-lfs
       gnome.nautilus
       gnumake
       gnupg
