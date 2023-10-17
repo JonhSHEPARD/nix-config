@@ -90,7 +90,6 @@ in {
       slack
       stern
       sublime4
-      teams
       teamviewer
       terraform
       thunderbird
