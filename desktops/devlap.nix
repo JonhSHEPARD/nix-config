@@ -4,6 +4,7 @@
   imports = [
     ./default.nix
     ./../modules/network-tools-gui.nix
+    ./../modules/battery-check.nix
   ];
 
   boot = {
