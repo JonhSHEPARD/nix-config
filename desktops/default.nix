@@ -8,7 +8,8 @@ let
   vms = pkgs.writeShellScriptBin "vms" ''
     virt-manager
   '';
-in {
+in
+{
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
   ];
@@ -62,6 +63,7 @@ in {
       jetbrains.datagrip
       jetbrains.goland
       jetbrains.idea-ultimate
+      jetbrains-toolbox
       krew
       kubecolor
       kubectl
@@ -97,7 +99,6 @@ in {
       vault
       vlc
       vms
-      vscode-with-extensions
       xournal
       yarn
       yubikey-personalization
@@ -123,7 +124,7 @@ in {
       "CRI.EPITA.FR" = {
         admin_server = "kerberos.pie.cri.epita.fr";
       };
-    }; 
+    };
   };
 
   nix.settings = {
@@ -132,7 +133,7 @@ in {
   };
 
   nixpkgs.overlays = [
-    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; } )
+    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
   ];
 
   programs = {
@@ -144,7 +145,7 @@ in {
       pinentryFlavor = "qt";
     };
 
-    zsh.enable = true; 
+    zsh.enable = true;
   };
 
   services = {

@@ -3,7 +3,7 @@
 {
   imports = [ ./default.nix ];
 
-  boot = { 
+  boot = {
     kernelModules = [ "kvm-intel" "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
     extraModulePackages = [ ];
 
@@ -80,7 +80,7 @@
         ];
       };
       br-local-pxe = {
-        interfaces = [];
+        interfaces = [ ];
       };
     };
 

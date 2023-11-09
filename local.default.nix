@@ -9,7 +9,7 @@
 
     # Laptop DEV
     # ./desktops/devlap.nix
-  
+
     #
 
     # Server iPXE VM
