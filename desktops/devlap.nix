@@ -32,14 +32,22 @@
 
   environment = {
     systemPackages = with pkgs; [
+      bash
       batsignal
       betterlockscreen
+      libsForQt5.kdeconnect-kde
       minicom
+      nodePackages.pnpm
       virt-manager
       virtiofsd
       xss-lock
-      bash
-      libsForQt5.kdeconnect-kde
+      (vscode-with-extensions.override {
+        vscodeExtensions = with vscode-extensions; [
+          dracula-theme.theme-dracula
+          vscodevim.vim
+          marp-team.marp-vscode
+        ];
+      })
     ];
 
     variables = {

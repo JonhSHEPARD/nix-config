@@ -63,9 +63,11 @@ in
       jami-client-qt
       jami-daemon
       jbang
+      jdk17
       jetbrains.datagrip
       jetbrains.goland
-      jetbrains.idea-ultimate
+      unstable.jetbrains.idea-ultimate
+      unstable.jetbrains.pycharm-professional
       jetbrains-toolbox
       krew
       kubecolor
