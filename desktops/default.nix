@@ -2,6 +2,9 @@
 { config, lib, pkgs, modulesPath, ... }:
 
 let
+  unstable = import <nixos-unstable> {
+    config = { allowUnfree = true; };
+  };
   chrome = pkgs.writeShellScriptBin "chrome" ''
     google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode
   '';
@@ -132,10 +135,6 @@ in
     keep-derivations = true;
   };
 
-  nixpkgs.overlays = [
-    (self: super: { nix-direnv = super.nix-direnv.override { enableFlakes = true; }; })
-  ];
-
   programs = {
     mtr.enable = true;
     gnupg.agent = {
@@ -157,10 +156,6 @@ in
 
     xserver = {
       enable = true;
-      layout = "us";
-      xkbVariant = "altgr-intl";
-      xkbOptions = "eurosign:e";
-
       displayManager = {
         autoLogin = {
           enable = true;
@@ -170,6 +165,11 @@ in
       windowManager.i3 = {
         enable = true;
         package = pkgs.i3-gaps;
+      };
+      xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+        options = "eurosign:e";
       };
     };
 
