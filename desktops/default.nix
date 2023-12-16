@@ -52,7 +52,6 @@ in
       flameshot
       gimp
       git-lfs
-      gnome.nautilus
       gnumake
       gnupg
       google-chrome
@@ -158,11 +157,20 @@ in
 
     xserver = {
       enable = true;
+      desktopManager = {
+        xterm.enable = false;
+        xfce = {
+          enable = true;
+          noDesktop = true;
+          enableXfwm = false;
+        };
+      };
       displayManager = {
         autoLogin = {
           enable = true;
           user = "jb";
         };
+        defaultSession = "xfce+i3";
       };
       windowManager.i3 = {
         enable = true;

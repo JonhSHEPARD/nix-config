@@ -4,7 +4,6 @@
   imports = [
     ./default.nix
     ./../modules/network-tools-gui.nix
-    ./../modules/battery-check.nix
   ];
 
   boot = {
@@ -99,12 +98,14 @@
       wlp2s0.useDHCP = true;
     };
 
-    wireless = {
+    wireless.enable = false;
+
+    networkmanager = {
       enable = true;
-      #userControlled.enable = true;
     };
 
     firewall = {
+      enable = true;
       allowedTCPPorts = [
         80
         443
@@ -115,6 +116,7 @@
       allowedUDPPortRanges = [
         { from = 1714; to = 1764; } # KDE Connect
       ];
+      checkReversePath = "loose";
     };
 
     nameservers = [ "1.1.1.1" "9.9.9.9" ];
@@ -127,20 +129,20 @@
 
     light.enable = true;
 
-    xss-lock = {
-      enable = true;
-      lockerCommand = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
-    };
+    #xss-lock = {
+    #  enable = true;
+    #  lockerCommand = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
+    #};
   };
 
   services = {
-    actkbd = {
-      enable = true;
-      bindings = [
-        { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
-        { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
-      ];
-    };
+    #actkbd = {
+    #  enable = true;
+    #  bindings = [
+    #    { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+    #    { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+    #  ];
+    #};
 
     blueman.enable = true;
 
