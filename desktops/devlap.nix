@@ -15,8 +15,11 @@
       kernelModules = [ "dm-crypt" "i915" ];
 
       luks.devices = {
-        uncrypted = {
-          device = "/dev/disk/by-uuid/15382968-c73e-4211-a4f2-460830224829";
+        encrypted = {
+          device = "/dev/disk/by-uuid/8b2b8265-c2a7-4dbe-b585-fd6330c50926";
+        };
+        eswap = {
+          device = "/dev/disk/by-uuid/9c82d8ea-189f-4277-a378-d6fca6af1ce1";
         };
       };
     };
@@ -56,12 +59,12 @@
 
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-uuid/AF8B-D892";
+      device = "/dev/disk/by-uuid/BDAB-FDA5";
       fsType = "vfat";
     };
 
     "/" = {
-      device = "/dev/disk/by-uuid/fa10cf90-b78f-4ec9-b60c-a9aa153ba7aa";
+      device = "/dev/disk/by-uuid/3660cd38-7772-479b-979f-003919be5e8d";
       fsType = "ext4";
     };
   };
@@ -185,7 +188,11 @@
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [
+    {
+      device = "/dev/disk/by-uuid/e9f6a364-c23f-4798-8618-dc58fb532b67";
+    }
+  ];
 
   virtualisation.libvirtd = {
     enable = true;
