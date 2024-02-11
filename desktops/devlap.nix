@@ -1,5 +1,10 @@
 { config, lib, pkgs, modulesPath, ... }:
 
+let
+  unstable = import <nixos-unstable> {
+    config = { allowUnfree = true; };
+  };
+in
 {
   imports = [
     ./default.nix
@@ -38,11 +43,27 @@
       bash
       batsignal
       betterlockscreen
+      jetbrains.datagrip
+      jetbrains.goland
+      unstable.jetbrains.idea-ultimate
+      unstable.jetbrains.pycharm-professional
+      jetbrains-toolbox
+      k9s
+      krb5
+      krew
+      kubecolor
+      kubectl
+      kubectl-doctor
+      kubectl-tree
+      kubectx
+      kubernetes-helm
       libsForQt5.kdeconnect-kde
       minicom
       nodePackages.pnpm
-      virt-manager
-      virtiofsd
+      openstackclient
+      stern
+      sublime4
+      teamviewer
       xss-lock
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
@@ -82,6 +103,27 @@
       intel-media-driver
     ];
   };
+
+  krb5 = {
+    enable = true;
+    libdefaults = {
+      default_realm = "CRI.EPITA.FR";
+      dns_fallback = true;
+      dns_canonicalize_hostname = false;
+      rnds = false;
+      forwardable = true;
+    };
+    realms = {
+      "CRI.EPITA.FR" = {
+        admin_server = "kerberos.pie.cri.epita.fr";
+      };
+    };
+  };
+
+  nixpkgs.config.permittedInsecurePackages = [
+    # This should not be here, thanks sublime :(
+    "openssl-1.1.1w"
+  ];
 
   networking = {
     hostName = "jb-portable-dev";
@@ -172,6 +214,8 @@
 
     #thermald.enable = true;
 
+    teamviewer.enable = true;
+
     upower = {
       enable = true;
     };
@@ -183,8 +227,20 @@
         enable = true;
         time = 3;
         locker = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
-        killtime = 10;
-        killer = "/run/current-system/systemd/bin/systemctl suspend";
+        #killtime = 10;
+        #killer = "/run/current-system/systemd/bin/systemctl suspend";
+        extraOptions = [
+          "-detectsleep"
+          "-notify 15"
+          "-notifier 'notify-send -u critical -i lock -t 10000 -- 'Locking screen in 15 seconds'"
+          "-corners '++--'"
+          "-cornerdelay 5"
+        ];
+      };
+      xkb = {
+        layout = "us";
+        variant = "altgr-intl";
+        options = "eurosign:e";
       };
     };
   };

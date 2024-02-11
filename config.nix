@@ -34,14 +34,13 @@ in
     inetutils
     ipcalc
     jq
-    k9s
-    krb5
     ldns
     ncdu
     neofetch
     neovim
     nload
     nmap
+    openvpn3
     poetry
     powertop
     siege
@@ -63,10 +62,6 @@ in
 
   nixpkgs.config = {
     allowUnfree = true;
-    # This should not be here, thanks sublime :(
-    permittedInsecurePackages = [
-      "openssl-1.1.1w"
-    ];
   };
 
   services.openssh.settings = {

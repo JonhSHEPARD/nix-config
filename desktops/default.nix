@@ -33,7 +33,6 @@ in
     '';
 
     systemPackages = with pkgs; [
-      #k3s
       alacritty
       apktool
       arandr
@@ -59,22 +58,9 @@ in
       gtk_engines
       imagemagick
       inkscape
-      jami-client-qt
-      jami-daemon
       jbang
       jdk17
-      jetbrains.datagrip
-      jetbrains.goland
-      unstable.jetbrains.idea-ultimate
-      unstable.jetbrains.pycharm-professional
-      jetbrains-toolbox
-      krew
-      kubecolor
-      kubectl
-      kubectl-doctor
-      kubectl-tree
-      kubectx
-      kubernetes-helm
+      libnotify
       libreoffice
       lightdm_gtk_greeter
       lxappearance
@@ -84,7 +70,6 @@ in
       nomacs
       nordic
       oh-my-zsh
-      openstackclient
       paperkey
       pavucontrol
       pciutils
@@ -93,14 +78,12 @@ in
       postgresql
       qbittorrent
       rxvt-unicode
-      slack
-      stern
-      sublime4
-      teamviewer
       terraform
       thunderbird
       usbutils
       vault
+      virt-manager
+      virtiofsd
       vlc
       vms
       xournal
@@ -113,22 +96,6 @@ in
     enable = true;
     package = pkgs.pulseaudioFull;
     extraConfig = "load-module module-echo-cancel";
-  };
-
-  krb5 = {
-    enable = true;
-    libdefaults = {
-      default_realm = "CRI.EPITA.FR";
-      dns_fallback = true;
-      dns_canonicalize_hostname = false;
-      rnds = false;
-      forwardable = true;
-    };
-    realms = {
-      "CRI.EPITA.FR" = {
-        admin_server = "kerberos.pie.cri.epita.fr";
-      };
-    };
   };
 
   nix.settings = {
@@ -150,10 +117,6 @@ in
 
   services = {
     printing.enable = true;
-    #k3s = {
-    #    enable = true;
-    #    role = "server";
-    #};
 
     xserver = {
       enable = true;
@@ -176,14 +139,7 @@ in
         enable = true;
         package = pkgs.i3-gaps;
       };
-      xkb = {
-        layout = "us";
-        variant = "altgr-intl";
-        options = "eurosign:e";
-      };
     };
-
-    teamviewer.enable = true;
 
     pcscd.enable = true;
     udev.packages = with pkgs; [ yubikey-personalization ];
