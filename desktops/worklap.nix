@@ -22,11 +22,11 @@ in
 
       # Change this to the real values
       luks.devices = {
-        encrypted = {
-          device = "/dev/disk/by-uuid/8b2b8265-c2a7-4dbe-b585-fd6330c50926";
+        eroot = {
+          device = "/dev/disk/by-uuid/%%UUID_ROOT%%";
         };
         eswap = {
-          device = "/dev/disk/by-uuid/9c82d8ea-189f-4277-a378-d6fca6af1ce1";
+          device = "/dev/disk/by-uuid/%%UUID_SWAP%%";
         };
       };
     };
@@ -43,10 +43,8 @@ in
     systemPackages = with pkgs; [
       bash
       batsignal
-      #betterlockscreen
       minicom
       nodePackages.pnpm
-      xss-lock
       (vscode-with-extensions.override {
         vscodeExtensions = with vscode-extensions; [
           dracula-theme.theme-dracula
@@ -64,12 +62,12 @@ in
   # Fix this
   fileSystems = {
     "/boot" = {
-      device = "/dev/disk/by-uuid/BDAB-FDA5";
+      device = "/dev/disk/by-uuid/%%UUID_BOOT%%";
       fsType = "vfat";
     };
 
     "/" = {
-      device = "/dev/disk/by-uuid/3660cd38-7772-479b-979f-003919be5e8d";
+      device = "/dev/disk/by-uuid/%%FS_UUID_ROOT%%";
       fsType = "ext4";
     };
   };
@@ -143,25 +141,18 @@ in
 
     logind = {
       extraConfig = ''
-        IdleAction=lock
-        IdleActionSec=3min
         HandlePowerKey=ignore
       '';
       lidSwitch = "hibernate";
-      lidSwitchDocked = "hibernate";
-      lidSwitchExternalPower = "hibernate";
+      lidSwitchDocked = "suspend";
+      lidSwitchExternalPower = "suspend";
     };
 
     printing = {
       enable = true;
       drivers = with pkgs; [
-        gutenprint
-        epson-escpr
-        epson-escpr2
       ];
     };
-
-    #thermald.enable = true;
 
     upower = {
       enable = true;
@@ -170,20 +161,6 @@ in
     xserver = {
       libinput.enable = true;
 
-      xautolock = {
-        enable = true;
-        time = 3;
-        locker = "${pkgs.betterlockscreen}/bin/betterlockscreen -l";
-        #killtime = 10;
-        #killer = "/run/current-system/systemd/bin/systemctl suspend";
-        extraOptions = [
-          "-detectsleep"
-          "-notify 15"
-          "-notifier 'notify-send -u critical -i lock -t 10000 -- 'Locking screen in 15 seconds'"
-          "-corners '++--'"
-          "-cornerdelay 5"
-        ];
-      };
       xkb = {
         layout = "us";
         variant = "altgr-intl";
@@ -194,7 +171,7 @@ in
 
   swapDevices = [
     {
-      device = "/dev/disk/by-uuid/e9f6a364-c23f-4798-8618-dc58fb532b67";
+      device = "/dev/disk/by-uuid/%%FS_UUID_SWAP%%";
     }
   ];
 
