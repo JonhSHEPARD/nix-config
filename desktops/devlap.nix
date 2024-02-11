@@ -4,6 +4,7 @@
   imports = [
     ./default.nix
     ./../modules/network-tools-gui.nix
+    ./../modules/apps/maas-cli
   ];
 
   boot = {

@@ -1,0 +1,2 @@
+# Do not push the source jar file
+*.jar
