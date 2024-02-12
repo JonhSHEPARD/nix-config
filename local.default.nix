@@ -4,17 +4,14 @@
 
 {
   imports = [
-    # Lab CRI
-    # ./desktops/lab.nix
-
     # Laptop DEV
     # ./desktops/devlap.nix
 
-    #
+    # Laptop WORK
+    # ./desktops/worklap.nix
 
     # Server iPXE VM
     # ./servers/ipxe_vm.nix
-
   ];
 
   #services.openssh = {
