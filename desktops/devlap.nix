@@ -42,6 +42,7 @@ in
     systemPackages = with pkgs; [
       bash
       batsignal
+      betterdiscordctl
       betterlockscreen
       chromium
       discord

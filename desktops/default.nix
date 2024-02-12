@@ -39,10 +39,8 @@ in
       asciinema
       asciinema-agg
       bashmount
-      betterdiscordctl
       chrome
       direnv
-      discord
       dive
       docker
       feh
