@@ -43,10 +43,10 @@ in
       bash
       batsignal
       betterlockscreen
+      chromium
+      discord
       jetbrains.datagrip
-      jetbrains.goland
       unstable.jetbrains.idea-ultimate
-      unstable.jetbrains.pycharm-professional
       jetbrains-toolbox
       k9s
       krb5
@@ -76,6 +76,7 @@ in
 
     variables = {
       VDPAU_DRIVER = lib.mkDefault "va_gl";
+      CHROME_EXECUTABLE = lib.mkDefault "chromium";
     };
   };
 

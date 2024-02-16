@@ -53,7 +53,7 @@ in
       git-lfs
       gnumake
       gnupg
-      google-chrome
+      unstable.google-chrome
       gtk-engine-murrine
       gtk_engines
       imagemagick
